@@ -29,6 +29,7 @@ handleSubmit(event){
   name: this.state.newRoomName
 });
   console.log("submitted");
+  this.state.newRoomName = '';
 
 }
 
