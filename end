@@ -1,0 +1,23 @@
+[33mcommit 53698ce6e0c534c526fac4220604750601e095ee[m[33m ([m[1;36mHEAD -> [m[1;32mcheckpoint-3[m[33m, [m[1;31morigin/checkpoint-3[m[33m)[m
+Author: kfarfan <34223564+kfarfan@users.noreply.github.com>
+Date:   Sat Feb 17 14:49:18 2018 -0500
+
+    text input goes back to blank after submission
+
+[33mcommit 6cf2b96797681583108a8e7bee8213226925e4c3[m
+Author: kfarfan <34223564+kfarfan@users.noreply.github.com>
+Date:   Sat Feb 17 12:45:50 2018 -0500
+
+    adding submit-button and input-text, to let the user create a new chat room in firebase
+
+[33mcommit cb46c9700e75cacaa71a23bc55796c5cfde9d320[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: kfarfan <34223564+kfarfan@users.noreply.github.com>
+Date:   Thu Feb 15 12:32:09 2018 -0500
+
+    added firebase and chatroom list
+
+[33mcommit 9bce08d5bbfa1869e5b07f097e88e9c49020e291[m
+Author: kfarfan <34223564+kfarfan@users.noreply.github.com>
+Date:   Wed Feb 14 23:17:39 2018 -0500
+
+    first commit

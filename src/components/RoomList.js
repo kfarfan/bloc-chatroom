@@ -27,12 +27,13 @@ componentDidMount() {
 render() {
   return (
     <section className="roomList">
-      <h1>Bloc Chat</h1>
-        <ul className="side-list"> {
-          this.state.rooms.map((room, index) =>
-          <li className="rooms" key={index}>{room.name}</li>
-        )}
-        </ul>
+    <h1>Bloc Chat</h1>
+    <ul>
+    {this.state.rooms.map((room, index) =>
+      <li key={index}>{room.name}</li>
+    )}
+    </ul>
+
 
       </section>
   );
