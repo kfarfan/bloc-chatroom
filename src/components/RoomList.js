@@ -47,7 +47,7 @@ render() {
       <h1>Bloc Chat</h1>
         <ul className="side-list"> {
           this.state.rooms.map((room, index) =>
-          <li className="rooms" key={index}>{room.name}</li>
+          <li className="rooms" onClick={() => {this.props.setActiveRoom(room)}} key={index}>{room.name} </li>
         )}
         </ul>
         <form onSubmit={this.handleSubmit.bind(this)}>
