@@ -5,10 +5,12 @@ class RoomList extends Component {
       super(props);
       this.state = {
         rooms: [],
-        newRoomName: ""
+        newRoomName: "",
       };
 
-      this.roomRef = this.props.firebase.database().ref('rooms');
+      this.storeInput = this.storeInput.bind(this);
+      this.createRoom = this.createRoom.bind(this);
+      this.roomsRef = this.props.firebase.database().ref('rooms');
 }
 
 
@@ -23,23 +25,31 @@ componentDidMount() {
   });
 }
 
-handleSubmit(event){
+createRoom(event) {
   event.preventDefault();
-  this.roomRef.push({
-  name: this.state.newRoomName
+    name: this.state.newRoomName
 });
-  console.log("submitted");
-  this.state.newRoomName = '';
-
+  this.setState({newRoomName: ""});
 }
 
-handleChange(event){
-  var newRoomName = event.target.value;
-  console.log(newRoomName);
-  this.setState({newRoomName: newRoomName})
+storeInput(e) {
+  const newValue = e.target.value;
+  this.setState({newRoomName: newValue});
 }
 
+handleClass(num) {
+  if (num.key === this.props.activeRoomID) {
+    return 'roomName activeRoom'
+  } else {
+    return 'roomName'
+  }
+}
 
+handleClick(num) {
+  const selectionID = num.key;
+  const selectionName = num.name;
+  this.props.handleClickState(selectionID, selectionName);
+}
 
 render() {
   return (

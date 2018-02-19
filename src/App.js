@@ -20,19 +20,25 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      activeRoom: null,
-    }
+      activeRoomID: '-L5frRxVY0iX6Wkl501T',
+      activeRoomName: 'Room 1'
+    };
+    this.handleClickState = this.handleClickState.bind(this);
   }
-  setActiveRoom(room){
-    this.setState({activeRoom: room})
+
+  handleClickState(selectionID, selectionName) {
+    const newActiveRoomID = selectionID;
+    const newActiveRoomName = selectionName
+    this.setState({activeRoomID: newActiveRoomID});
+    this.setState({activeRoomName: newActiveRoomName});
   }
 
   render() {
     return (
       <div className="App">
         <main>
-          <RoomList firebase={firebase} setActiveRoom={this.setActiveRoom.bind(this)}/>
-          <MessageList firebase={firebase} activeRoom={this.state.activeRoom}/>
+          <RoomList firebase={firebase} activeRoomID={this.state.activeRoomID} activeRoomName={this.state.activeRoomName} handleClickState={this.handleClickState}/>
+          <MessageList firebase={firebase} activeRoomID={this.state.activeRoomID} activeRoomName={this.state.activeRoomName}/>
         </main>
       </div>
     );
