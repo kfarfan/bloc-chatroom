@@ -1,39 +1,44 @@
 import React, { Component } from 'react';
 
-class MessageList extends Component{
-  constructor(props){
-      super(props);
-      this.state = {
-        messages: []
-      };
-      this.roomsRef = this.props.firebase.database().ref('rooms');
-      this.messagesRef = this.props.firebase.database().ref('messages');
-}
+class MessageList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: []
+    };
+    this.messagesRef = this.props.firebase.database().ref('messages');
+  }
 
-componentDidMount() {
-  this.messagesRef.on('child_added', snapshot => {
-    const message = snapshot.val();
-    message.key = snapshot.key;
-    this.setState({ messages: this.state.messages.concat( message) });
-     });
-   }
+  componentDidMount() {
+    this.messagesRef.on('child_added', snapshot => {
+      const message = snapshot.val();
+      message.key = snapshot.key;
+      this.setState({messages: this.state.messages.concat(message)});
+    });
+  }
 
-
-render() {
-  return (
-    <section className="roomList">
-      <ul>
-      <h2>{ this.props.activeRoom ? this.props.activeRoom.name : '' }</h2>
-      </ul>
-      <ul>{
-        this.messagesRef.map((message, index) =>
-          <li key={index}>{this.message}</li>
-      )}
-      </ul>
-
-      </section>
-  );
- }
+  render() {
+    return(
+      <div id='messages'>
+        <h2>{this.props.activeRoomName}</h2>
+        <ul id='message-list'>
+          {this.state.messages.map((id, index) => {
+            if (id.roomID === this.props.activeRoomID) {
+              return (
+                <li key={index} className='message'>
+                  <div className='message'>
+                    <h3 className='username'>{id.username}</h3>
+                    <p className='sentAt'>{id.sentAt}</p>
+                    <p className='content'>{id.content}</p>
+                  </div>
+                </li>
+              )
+            }
+          })}
+        </ul>
+      </div>
+    )
+  }
 }
 
 export default MessageList;
